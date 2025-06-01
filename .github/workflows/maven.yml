@@ -60,7 +60,7 @@ jobs:
           distribution: 'adopt'
           server-id: github
           server-username: eduardodcs
-          server-password: ${{ secrets.PACKAGE_TOKEN }}
+          server-password: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Build with Maven
         run: mvn clean install
