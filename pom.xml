@@ -33,10 +33,10 @@
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 	</properties>
-	<repositories>
+		<repositories>
 		<repository>
-			<id>github</id>
-			<url>https://maven.pkg.github.com/eduardodcs/commons-web</url>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
 		</repository>
 	</repositories>
 	<dependencies>
@@ -91,9 +91,9 @@
 			<artifactId>micrometer-registry-prometheus</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.bank</groupId>
+			<groupId>com.github.eduardodcs</groupId>
 			<artifactId>common-web</artifactId>
-			<version>1.0.0</version>
+			<version>v1.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>io.github.resilience4j</groupId>
