@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: seguros
+
+server:
+  port: 8081
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      clienteService:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 30s
+        permittedNumberOfCallsInHalfOpenState: 3
+        minimumNumberOfCalls: 5
+        slowCallDurationThreshold: 2s
+        slowCallRateThreshold: 10
+        #recordExceptions:
+        #  - org.springframework.web.client.ResourceAccessException
+        #  - java.io.IOException
+        #  - java.net.ConnectException
+        #  - java.net.SocketTimeoutException
+        #  - org.springframework.web.client.HttpServerErrorException
+        #  - org.springframework.web.client.HttpClientErrorException
+          
+management:
+  endpoints:
+    web:
+      exposure:
+        include: resilience4j.circuitbreakers
+
+
+cliente:
+    #url: http://cliente-service:8080
+    url: http://localhost:8080
