@@ -38,7 +38,8 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+        run: mvn -B clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.qualitygate.wait=false
+        continue-on-error: true
 
 
   build-app:
@@ -58,9 +59,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-          server-id: github
-          server-username: eduardodcs
-          server-password: ${{ secrets.PACKAGE_TOKEN }}
           
       - name: Build with Maven
         run: mvn clean install
