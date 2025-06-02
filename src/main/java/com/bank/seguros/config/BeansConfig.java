@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 import com.bank.common_web.handler.GlobalExceptionHandler;
+import com.bank.seguros.adapters.gateways.IClienteGateway;
 import com.bank.seguros.adapters.gateways.ISeguroVidaGateway;
 import com.bank.seguros.core.vida.usecases.SeguroVidaUseCase;
 
@@ -22,7 +23,7 @@ public class BeansConfig {
     }
 
     @Bean
-    public SeguroVidaUseCase seguroVidaUseCase(ISeguroVidaGateway seguroVidaGateway) {
-        return new SeguroVidaUseCase(seguroVidaGateway);
+    public SeguroVidaUseCase seguroVidaUseCase(ISeguroVidaGateway seguroVidaGateway, IClienteGateway clienteGateway) {
+        return new SeguroVidaUseCase(seguroVidaGateway, clienteGateway);
     }
 }

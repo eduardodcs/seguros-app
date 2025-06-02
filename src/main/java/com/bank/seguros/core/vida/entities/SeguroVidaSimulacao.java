@@ -1,9 +1,6 @@
 package com.bank.seguros.core.vida.entities;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
-
-import com.bank.seguros.core.vida.SeguroVidaCoberturas;
 
 public class SeguroVidaSimulacao extends SeguroVidaAbstract {
 
@@ -18,8 +15,6 @@ public class SeguroVidaSimulacao extends SeguroVidaAbstract {
     private SeguroVidaSimulacao(Builder builder) {
         super(builder);
         this.dataValidadeSimulacao = super.getDataHoraSimulacao().toLocalDate().plusDays(PRAZO_VALIDADE_PROPOSTA);
-        SeguroVidaCoberturas.atribuirCoberturas(super.tipoPlano, super.coberturas);
-        super.valorPremioMensal = calcularValorMensalPremio().doubleValue();
     }
 
     public Builder toBuilder() {
@@ -54,11 +49,6 @@ public class SeguroVidaSimulacao extends SeguroVidaAbstract {
         return dataValidadeSimulacao;
     }
 
-    @Override
-    public BigDecimal calcularValorMensalPremio() {
-        return coberturas.stream()
-                .map(c -> c.getValorPremio())
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-    }
+    
 
 }

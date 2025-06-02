@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bank.seguros.adapters.usecases.ISeguroVidaUseCase;
+import com.bank.seguros.controllers.dtos.SeguroVidaContratacaoDTO;
+import com.bank.seguros.controllers.dtos.SeguroVidaPedidoContratacaoDTO;
 import com.bank.seguros.controllers.dtos.SeguroVidaPedidoSimulacaoDTO;
 import com.bank.seguros.controllers.dtos.SeguroVidaSimulacaoDTO;
-import com.bank.seguros.core.vida.entities.SeguroVidaPedidoSimulacao;
-import com.bank.seguros.core.vida.entities.SeguroVidaSimulacao;
 import com.bank.seguros.mappers.ISeguroVidaMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +29,18 @@ public class SeguroVidaController {
 
     @PostMapping("/simular")
     public ResponseEntity<SeguroVidaSimulacaoDTO> simularSeguro(
-        @RequestBody SeguroVidaPedidoSimulacaoDTO seguroVidaPedidoSimulacaoDTO) {
-        SeguroVidaPedidoSimulacao pedido = seguroVidaMapper.toSeguroVidaPedidoSimulacao(seguroVidaPedidoSimulacaoDTO);
-        SeguroVidaSimulacao simulacao = seguroVidaUseCase.simular(pedido);
-        return ResponseEntity.ok(
-            seguroVidaMapper.toSeguroVidaSimulacaoDTO(simulacao));
+            @RequestBody SeguroVidaPedidoSimulacaoDTO seguroVidaPedidoSimulacaoDTO) {
+        return ResponseEntity.ok(seguroVidaMapper
+            .toSeguroVidaSimulacaoDTO(seguroVidaUseCase
+                .simular(seguroVidaMapper.toSeguroVidaPedidoSimulacao(seguroVidaPedidoSimulacaoDTO))));
+    }
+
+    @PostMapping("/contratar")
+    public ResponseEntity<SeguroVidaContratacaoDTO> contratarSeguro(
+            @RequestBody SeguroVidaPedidoContratacaoDTO seguroVidaPedidoContratacaoDTO) {
+        return ResponseEntity.ok(seguroVidaMapper
+            .toSeguroVidaPedidoContratacaoDTO(seguroVidaUseCase
+                .contratar(seguroVidaMapper.toSeguroVidaPedidoContratacao(seguroVidaPedidoContratacaoDTO))));
     }
     
 }

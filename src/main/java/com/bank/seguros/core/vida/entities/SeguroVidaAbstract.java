@@ -1,11 +1,13 @@
 package com.bank.seguros.core.vida.entities;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 import com.bank.common_web.exceptions.BusinessException;
 import com.bank.seguros.core.ICobertura;
 import com.bank.seguros.core.SeguroAbstract;
+import com.bank.seguros.core.vida.SeguroVidaCoberturas;
 
 public abstract class SeguroVidaAbstract extends SeguroAbstract {
 
@@ -16,6 +18,8 @@ public abstract class SeguroVidaAbstract extends SeguroAbstract {
         super(builder);
         this.idSimulacao = obterIdSimulacao(builder);
         this.dataHoraSimulacao = obterDataHoraSimulacao(builder);
+        SeguroVidaCoberturas.atribuirCoberturas(super.tipoPlano, super.coberturas);
+        super.valorPremioMensal = calcularValorMensalPremio().doubleValue();
     }
 
     private LocalDateTime obterDataHoraSimulacao(Builder<?, ?> builder) {
@@ -58,7 +62,13 @@ public abstract class SeguroVidaAbstract extends SeguroAbstract {
         } else {
             throw new BusinessException("Cobertura inválida para Seguro de Vida");
         }
-    
     } 
+
+    @Override
+    public BigDecimal calcularValorMensalPremio() {
+        return coberturas.stream()
+                .map(c -> c.getValorPremio())
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
 
 }
