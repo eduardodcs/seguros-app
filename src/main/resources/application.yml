@@ -27,5 +27,4 @@ management:
         include: "*"
 
 cliente:
-    #url: http://cliente-service:8080
-    url: http://localhost:8080
+    url: ${CLIENTES_API_URL:http://localhost:8080}
