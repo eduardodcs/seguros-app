@@ -25,6 +25,13 @@ management:
     web:
       exposure:
         include: "*"
+  endpoint:
+    prometheus:
+      access: read-only
+  prometheus:    
+    metrics:
+      export:
+        enabled: true
 
 cliente:
     url: ${CLIENTES_API_URL:http://localhost:8080}
