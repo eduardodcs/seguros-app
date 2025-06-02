@@ -1,4 +1,4 @@
-package com.bank.seguros.adapters.interfaces.usecases;
+package com.bank.seguros.adapters.usecases;
 
 import com.bank.seguros.core.vida.entities.SeguroVidaPedidoSimulacao;
 import com.bank.seguros.core.vida.entities.SeguroVidaSimulacao;

@@ -15,20 +15,13 @@ public abstract class SeguroAbstract {
 
     protected SeguroAbstract(Builder<?, ?> builder) {
         this.tipoPlano = builder.tipoPlano;
-        this.descricaoSeguro = builder.descricaoSeguro;
     }
 
     public abstract static class Builder<T extends SeguroAbstract, B extends Builder<T, B>> {
         protected TipoPlano tipoPlano;
-        protected String descricaoSeguro;
 
         public B tipoPlano(TipoPlano tipoPlano) {
             this.tipoPlano = tipoPlano;
-            return self();
-        }
-
-        public B descricaoSeguro(String descricaoSeguro) {
-            this.descricaoSeguro = descricaoSeguro;
             return self();
         }
 

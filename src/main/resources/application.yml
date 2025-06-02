@@ -1,6 +1,9 @@
 spring:
   application:
     name: seguros
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/segurosdb
 
 server:
   port: 8081
@@ -16,20 +19,12 @@ resilience4j:
         minimumNumberOfCalls: 5
         slowCallDurationThreshold: 2s
         slowCallRateThreshold: 10
-        #recordExceptions:
-        #  - org.springframework.web.client.ResourceAccessException
-        #  - java.io.IOException
-        #  - java.net.ConnectException
-        #  - java.net.SocketTimeoutException
-        #  - org.springframework.web.client.HttpServerErrorException
-        #  - org.springframework.web.client.HttpClientErrorException
           
 management:
   endpoints:
     web:
       exposure:
-        include: resilience4j.circuitbreakers
-
+        include: "*"
 
 cliente:
     #url: http://cliente-service:8080

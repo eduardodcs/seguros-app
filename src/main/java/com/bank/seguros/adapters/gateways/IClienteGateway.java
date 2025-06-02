@@ -1,4 +1,4 @@
-package com.bank.seguros.adapters.interfaces.gateways;
+package com.bank.seguros.adapters.gateways;
 
 import com.bank.seguros.core.commons.entities.Cliente;
 

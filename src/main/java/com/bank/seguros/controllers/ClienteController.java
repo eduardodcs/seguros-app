@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bank.seguros.adapters.interfaces.gateways.IClienteGateway;
+import com.bank.seguros.adapters.gateways.IClienteGateway;
 import com.bank.seguros.client.dtos.ClienteDTO;
 import com.bank.seguros.mappers.IClienteMapper;
 

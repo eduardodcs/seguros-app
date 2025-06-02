@@ -3,7 +3,7 @@ package com.bank.seguros.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bank.seguros.adapters.interfaces.usecases.ISeguroVidaUseCase;
+import com.bank.seguros.adapters.usecases.ISeguroVidaUseCase;
 import com.bank.seguros.controllers.dtos.SeguroVidaPedidoSimulacaoDTO;
 import com.bank.seguros.controllers.dtos.SeguroVidaSimulacaoDTO;
 import com.bank.seguros.core.vida.entities.SeguroVidaPedidoSimulacao;

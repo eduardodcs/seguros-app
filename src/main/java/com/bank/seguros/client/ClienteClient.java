@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.bank.common_web.exceptions.BusinessException;
-import com.bank.seguros.adapters.interfaces.gateways.IClienteGateway;
+import com.bank.seguros.adapters.gateways.IClienteGateway;
 import com.bank.seguros.client.dtos.ClienteDTO;
 import com.bank.seguros.core.commons.entities.Cliente;
 import com.bank.seguros.mappers.IClienteMapper;

@@ -2,9 +2,15 @@ package com.bank.seguros.core.vida.entities.cobertura;
 
 import java.math.BigDecimal;
 
+import com.bank.seguros.core.commons.constants.CoberturaId;
 import com.bank.seguros.core.vida.entities.ICoberturaVida;
 
 public class CoberturaDoencaGrave implements ICoberturaVida {
+
+    @Override
+    public int getId() {
+        return CoberturaId.VIDA_COBERTURA_DOENCA_GRAVE.getId();
+    }
 
     @Override
     public String getDescricao() {
