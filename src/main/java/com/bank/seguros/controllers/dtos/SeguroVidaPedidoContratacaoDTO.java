@@ -2,9 +2,12 @@ package com.bank.seguros.controllers.dtos;
 
 import java.util.UUID;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 public class SeguroVidaPedidoContratacaoDTO {
 
     private UUID idSimulacao;
+    @CPF
     private String cpfCliente;
 
     public SeguroVidaPedidoContratacaoDTO() {

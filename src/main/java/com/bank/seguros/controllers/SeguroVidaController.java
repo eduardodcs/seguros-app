@@ -10,6 +10,8 @@ import com.bank.seguros.controllers.dtos.SeguroVidaPedidoSimulacaoDTO;
 import com.bank.seguros.controllers.dtos.SeguroVidaSimulacaoDTO;
 import com.bank.seguros.mappers.ISeguroVidaMapper;
 
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,7 +38,7 @@ public class SeguroVidaController {
     }
 
     @PostMapping("/contratar")
-    public ResponseEntity<SeguroVidaContratacaoDTO> contratarSeguro(
+    public ResponseEntity<SeguroVidaContratacaoDTO> contratarSeguro(@Valid
             @RequestBody SeguroVidaPedidoContratacaoDTO seguroVidaPedidoContratacaoDTO) {
         return ResponseEntity.ok(seguroVidaMapper
             .toSeguroVidaPedidoContratacaoDTO(seguroVidaUseCase
